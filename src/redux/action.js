@@ -1,16 +1,20 @@
-// Define action types
 export const GET_USER = 'GET_USER';
 export const GET_USER_NAME = 'GET_USER_NAME';
 export const REVIEW ='REVIEW'
 export const VERIFIEDUSER='VERIFIEDUSER'
 export const SELECTEDUSER ='SELECTEDUSER'
+export const EXPENCE_ADDED = 'EXPENCE_ADDED'
  ;
-// export const DECREMENT = 'DECREMENT';
 
-// Action creators for incrementing and decrementing
 export const getUserFromReducer = (data) => {
   return {
     type: GET_USER,data
+  };
+};
+
+export const expenceAddedFlag = (data) => {
+  return {
+    type: EXPENCE_ADDED,data
   };
 };
 

@@ -1,6 +1,5 @@
 import React, { useState, createContext, useContext, useEffect } from 'react';
 
-// Create a context to track OTP verification status
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
@@ -19,7 +18,7 @@ export const AuthProvider = ({ children }) => {
 const handleSetVerified = (value) => {
   console.log("....,handleSetVerified",value)
   setIsverified(value);
-  localStorage.setItem('isVerified', value); // Store in local storage
+  localStorage.setItem('isVerified', value); 
 };
 
   return (

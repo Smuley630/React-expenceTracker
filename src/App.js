@@ -11,6 +11,7 @@ import AddReview from './Review/AddReview'
 import SeeReview from './Review/SeeReview'
 import ProtectedRoute from './Authenticator/ProtectedRoute';
 import { AuthProvider } from './Authenticator/AuthProvider ';
+import ViewExpence from './Expence/ViewExpence';
 
 const About = () => {
   return (
@@ -43,6 +44,7 @@ const App = () => {
                   <Route path="/home/addReview" element={<AddReview />} />
                   <Route path="/home/seeReview" element={<SeeReview />} />
                   <Route path="/home/details" element={<EmployeeDetails />} />
+                  <Route path="/home/expence" element={<ViewExpence />} />
               </Routes>
           </Router>
       </AuthProvider>

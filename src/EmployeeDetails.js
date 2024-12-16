@@ -9,7 +9,7 @@ const FoodItems = () => {
     useEffect(() => {
         const fetchItems = async () => {
             try {
-                const response = await axios.get('http://localhost:8000/footItems'); // replace with your endpoint
+                const response = await axios.get('http://localhost:8000/footItems'); 
                 setItems(response.data.data);
                 setLoading(false);
             } catch (error) {
@@ -23,7 +23,6 @@ const FoodItems = () => {
 
     const addToCart = (item) => {
         console.log('Adding to cart:', item);
-        // Logic to add item to cart, e.g., using Redux or context state
     };
     if (loading) return <Loader />;
 
@@ -48,7 +47,6 @@ const FoodItems = () => {
     );
 };
 
-// Basic styles for the component
 const styles = {
     container: {
         display: 'flex',

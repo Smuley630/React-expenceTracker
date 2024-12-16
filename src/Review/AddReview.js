@@ -1,29 +1,26 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const ReviewForm = () => {
-  const [review, setreview] = useState(''); // State to hold review text
-  const [successMessage, setSuccessMessage] = useState(''); // Message to show on success or failure
-  const count = useSelector((state) => state.counter.userName);
-  let name = count
-console.log("   /////////",name)
+  const location = useLocation();
 
-  // Handle form submission
+  const [review, setreview] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
+  const count1 = useSelector((state) => state.counter);
+  const navigate = useNavigate();
+  const name = location.state
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-
     try {
-      // Make POST request to submit the review
-    //   const response = await axios.post(apiUrl, { review: review });
-      const response = await axios.post('http://localhost:8000/user/addReview', { name, review  });
-
-
+      const response = await axios.post('http://localhost:8000/user/addReview', { name, review });
       if (response.status === 200) {
         setSuccessMessage('Review submitted successfully!');
-        alert(successMessage)
-        setreview(''); // Clear input after successful submission
+        alert("Review submitted successfully!")
+        setreview('');
+        navigate(-1);
+
       }
     } catch (error) {
       console.error('Error submitting review:', error);
@@ -33,7 +30,7 @@ console.log("   /////////",name)
 
   return (
     <div style={styles.container}>
-      <h2>Add Your Review</h2>
+      <h2 style={{ flex: 1, textAlign: "center" }}>Add Your Review</h2>
       <form onSubmit={handleSubmit}>
         <textarea
           style={styles.textarea}
@@ -42,7 +39,9 @@ console.log("   /////////",name)
           onChange={(e) => setreview(e.target.value)}
         />
         <br />
-        <button type="submit" style={styles.button}>Submit Review</button>
+        <div style={{ alignItems: "center" }}>
+          <button type="submit" style={styles.button}>Submit Review</button>
+        </div>
       </form>
       {successMessage && <p>{successMessage}</p>}
     </div>
@@ -51,31 +50,32 @@ console.log("   /////////",name)
 
 const styles = {
   container: {
-    width: '100%',
-    maxWidth: '500px',
-    margin: '20px auto',
     padding: '20px',
-    border: '1px solid #ddd',
-    borderRadius: '8px',
-    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+    backgroundColor: '#f9f9f9',
+    borderRadius: '15px',
+    boxShadow: '0 8px 16px rgba(0, 0, 0, 0.2)',
+    maxWidth: '600px',
+    margin: '20px auto',
+    justifyContent: "center", alignItems: "center",
   },
   textarea: {
     width: '100%',
     height: '100px',
     padding: '10px',
     fontSize: '16px',
-    borderRadius: '4px',
+    borderRadius: '14px',
     borderColor: '#ccc',
   },
   button: {
     padding: '10px 20px',
-    marginTop: '10px',
+    marginTop: '30px',
     backgroundColor: '#007bff',
     color: 'white',
     border: 'none',
     borderRadius: '5px',
     cursor: 'pointer',
     fontSize: '16px',
+    marginLeft: "200px"
   },
 };
 

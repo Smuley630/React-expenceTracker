@@ -15,7 +15,6 @@ const EmployeeCard = ({ employee }) => {
   );
 };
 
-// Inline styles for simplicity
 const styles = {
   card: {
     border: '1px solid #ddd',
